@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>About | QuickLaunch Business</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-light: #818cf8;
+            --primary-dark: #4f46e5;
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.18);
+            --glass-highlight: rgba(255, 255, 255, 0.25);
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.7);
+            --text-muted: rgba(255, 255, 255, 0.5);
+            --bg-dark: #0f0f1a;
+            --bg-darker: #0a0a12;
+            --accent-cyan: #22d3ee;
+            --accent-pink: #f472b6;
+            --accent-amber: #fbbf24;
+            --accent-emerald: #34d399;
+            --nav-height: 80px;
+            --safe-area-bottom: env(safe-area-inset-bottom, 20px);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            background: var(--bg-darker);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            padding-bottom: calc(var(--nav-height) + var(--safe-area-bottom) + 20px);
+        }
+
+        /* Background Effects */
+        .bg-mesh {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 20% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(34, 211, 238, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(244, 114, 182, 0.08) 0%, transparent 60%);
+            animation: meshMove 20s ease-in-out infinite;
+        }
+
+        @keyframes meshMove {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.95); }
+        }
+
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -1;
+            opacity: 0.4;
+            animation: float 15s ease-in-out infinite;
+        }
+
+        .orb-1 {
+            width: 300px;
+            height: 300px;
+            background: var(--primary);
+            top: 10%;
+            left: -10%;
+            animation-delay: 0s;
+        }
+
+        .orb-2 {
+            width: 250px;
+            height: 250px;
+            background: var(--accent-cyan);
+            top: 60%;
+            right: -5%;
+            animation-delay: -5s;
+        }
+
+        .orb-3 {
+            width: 200px;
+            height: 200px;
+            background: var(--accent-pink);
+            bottom: 20%;
+            left: 20%;
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(50px, -30px) scale(1.1); }
+            50% { transform: translate(-30px, 50px) scale(0.9); }
+            75% { transform: translate(20px, 20px) scale(1.05); }
+        }
+
+        /* Header */
+        .header {
+            padding: 24px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(15, 15, 26, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, var(--primary), var(--accent-cyan));
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 20px;
+            color: white;
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
+        }
+
+        .logo-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 22px;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #fff, var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo-sub {
+            font-size: 11px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: -2px;
+        }
+
+        .desktop-nav {
+            display: none;
+        }
+
+        /* Page Hero */
+        .page-hero {
+            padding: 48px 20px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .page-hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.2rem, 6vw, 3.5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
+
+        .page-hero h1 span {
+            background: linear-gradient(135deg, var(--primary-light), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-hero p {
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Glass Card Base */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 28px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--glass-highlight), transparent);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--glass-highlight);
+            box-shadow:
+                0 20px 40px rgba(0, 0, 0, 0.3),
+                0 0 0 1px rgba(255, 255, 255, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .shine {
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0) 40%,
+                rgba(255, 255, 255, 0.05) 50%,
+                rgba(255, 255, 255, 0) 60%,
+                rgba(255, 255, 255, 0) 100%
+            );
+            transform: rotate(45deg);
+            transition: all 0.6s ease;
+            pointer-events: none;
+        }
+
+        .glass-card:hover .shine {
+            top: -30%;
+            left: -30%;
+        }
+
+        /* Story Section */
+        .story-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 40px;
+        }
+
+        .story-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .story-card {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .story-card h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .story-card p {
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .story-card .highlight {
+            color: var(--accent-cyan);
+            font-weight: 600;
+        }
+
+        /* Integration Showcase */
+        .integrations-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .section-header h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .section-header p {
+            color: var(--text-secondary);
+            font-size: 15px;
+        }
+
+        .integrations-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .integration-card {
+            text-align: center;
+            padding: 24px 16px;
+        }
+
+        .integration-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin: 0 auto 12px;
+        }
+
+        .int-whatsapp { background: linear-gradient(135deg, #25d366, #128c7e); }
+        .int-stripe { background: linear-gradient(135deg, #635bff, #96f7d6); }
+        .int-paypal { background: linear-gradient(135deg, #003087, #009cde); }
+        .int-facebook { background: linear-gradient(135deg, #1877f2, #42b72a); }
+        .int-email { background: linear-gradient(135deg, #ea4335, #fbbc05); }
+        .int-calendar { background: linear-gradient(135deg, #4285f4, #34a853); }
+
+        .integration-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .integration-card p {
+            color: var(--text-secondary);
+            font-size: 13px;
+            line-height: 1.4;
+        }
+
+        /* Values Grid */
+        .values-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+
+        .value-card {
+            padding: 24px;
+            text-align: center;
+        }
+
+        .value-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin: 0 auto 16px;
+            position: relative;
+        }
+
+        .value-icon::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 16px;
+            opacity: 0.2;
+            filter: blur(8px);
+            z-index: -1;
+        }
+
+        .icon-speed { background: linear-gradient(135deg, #3b82f6, #06b6d4); }
+        .icon-speed::after { background: #3b82f6; }
+        .icon-simple { background: linear-gradient(135deg, #f59e0b, #ef4444); }
+        .icon-simple::after { background: #f59e0b; }
+        .icon-connected { background: linear-gradient(135deg, #10b981, #059669); }
+        .icon-connected::after { background: #10b981; }
+        .icon-affordable { background: linear-gradient(135deg, #8b5cf6, #a855f7); }
+        .icon-affordable::after { background: #8b5cf6; }
+
+        .value-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .value-card p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* Process Section */
+        .process-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+
+        .process-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 24px;
+        }
+
+        .process-number {
+            width: 48px;
+            height: 48px;
+            min-width: 48px;
+            background: linear-gradient(135deg, var(--primary), var(--accent-cyan));
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 20px;
+            color: white;
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
+        }
+
+        .process-content h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .process-content p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 40px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 24px 16px;
+        }
+
+        .stat-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 36px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-light), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px 80px;
+        }
+
+        .cta-card {
+            text-align: center;
+            padding: 40px 32px;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(34, 211, 238, 0.1));
+            border: 1px solid rgba(99, 102, 241, 0.3);
+        }
+
+        .cta-card h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .cta-card p {
+            color: var(--text-secondary);
+            font-size: 15px;
+            margin-bottom: 28px;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 32px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border: none;
+            border-radius: 16px;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+            min-height: 56px;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-primary:active {
+            transform: scale(0.95);
+        }
+
+        .btn-icon {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-primary:hover .btn-icon {
+            transform: translateX(4px);
+        }
+
+        /* Bottom Navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 12px 20px calc(12px + var(--safe-area-bottom));
+            background: rgba(15, 15, 26, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .nav-container {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            background: transparent;
+            color: var(--text-muted);
+            min-width: 64px;
+            min-height: 64px;
+            justify-content: center;
+            text-decoration: none;
+        }
+
+        .nav-item.active {
+            color: var(--primary-light);
+            background: rgba(99, 102, 241, 0.15);
+        }
+
+        .nav-item:active {
+            transform: scale(0.9);
+        }
+
+        .nav-icon {
+            width: 24px;
+            height: 24px;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-item.active .nav-icon {
+            transform: translateY(-2px);
+        }
+
+        .nav-label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-darker);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--glass-border);
+            border-radius: 4px;
+        }
+
+        /* Animations */
+        @keyframes cardEnter {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .glass-card {
+            animation: cardEnter 0.6s ease-out backwards;
+        }
+
+        .glass-card:nth-child(1) { animation-delay: 0.1s; }
+        .glass-card:nth-child(2) { animation-delay: 0.2s; }
+        .glass-card:nth-child(3) { animation-delay: 0.3s; }
+        .glass-card:nth-child(4) { animation-delay: 0.4s; }
+
+        /* Responsive */
+        @media (min-width: 768px) {
+            .story-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .process-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .integrations-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .bottom-nav {
+                display: none;
+            }
+
+            body {
+                padding-bottom: 0;
+            }
+
+            .desktop-nav {
+                display: flex;
+                gap: 32px;
+                align-items: center;
+            }
+
+            .desktop-nav a {
+                color: var(--text-secondary);
+                text-decoration: none;
+                font-size: 14px;
+                font-weight: 500;
+                transition: color 0.3s ease;
+            }
+
+            .desktop-nav a:hover {
+                color: var(--text-primary);
+            }
+
+            .page-hero {
+                padding: 80px 20px 60px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .values-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .process-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .integrations-grid {
+                grid-template-columns: repeat(6, 1fr);
+            }
+
+            .glass-card {
+                padding: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-mesh"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">B</div>
+                <div>
+                    <div class="logo-text">QuickLaunch</div>
+                    <div class="logo-sub">Business-In-a-Box</div>
+                </div>
+            </a>
+            <nav class="desktop-nav">
+                <a href="index.html">Boxes</a>
+                <a href="about.html">About</a>
+                <a href="#" onclick="showToast(event)">Pricing</a>
+                <a href="#" onclick="showToast(event)">Contact</a>
+                <a href="index.html" class="btn-primary" style="padding: 10px 20px; font-size: 14px; min-height: 44px;">
+                    Get Started
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <h1>Your Business <span>In a Box</span></h1>
+        <p>QuickLaunch Business delivers complete Business-In-a-Box digital portals for independent traders. No coding. No complexity. Just a beautiful, connected website that runs from your phone — live in 48 hours.</p>
+    </section>
+
+    <!-- Story Section -->
+    <section class="story-section">
+        <div class="story-grid">
+            <div class="glass-card story-card">
+                <div class="shine"></div>
+                <h2>🎯 Our Mission</h2>
+                <p>To put professional Business-In-a-Box digital tools within reach of every solopreneur. Whether you're a barber, baker, or tech consultant — you deserve a QuickLaunch portal that <span class="highlight">connects you to customers, takes payments, and manages bookings</span> without you lifting a finger.</p>
+            </div>
+            <div class="glass-card story-card">
+                <div class="shine"></div>
+                <h2>💡 How It Started</h2>
+                <p>We watched brilliant independent traders lose customers because they had no online presence, or struggle with clunky DIY websites. We asked, <span class="highlight">"What if we could box up everything a business needs and deliver it ready to run?"</span></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Integrations Section -->
+    <section class="integrations-section">
+        <div class="section-header">
+            <h2>Everything Connected</h2>
+            <p>Your portal comes plugged into the tools you already use</p>
+        </div>
+        <div class="integrations-grid">
+            <div class="glass-card integration-card">
+                <div class="shine"></div>
+                <div class="integration-icon int-whatsapp">💬</div>
+                <h3>WhatsApp</h3>
+                <p>Instant customer enquiries and order confirmations</p>
+            </div>
+            <div class="glass-card integration-card">
+                <div class="shine"></div>
+                <div class="integration-icon int-stripe">💳</div>
+                <h3>Stripe</h3>
+                <p>Secure card payments and subscriptions</p>
+            </div>
+            <div class="glass-card integration-card">
+                <div class="shine"></div>
+                <div class="integration-icon int-paypal">🅿️</div>
+                <h3>PayPal</h3>
+                <p>Trusted checkout for global customers</p>
+            </div>
+            <div class="glass-card integration-card">
+                <div class="shine"></div>
+                <div class="integration-icon int-facebook">👍</div>
+                <h3>Facebook</h3>
+                <p>Page sync and social booking links</p>
+            </div>
+            <div class="glass-card integration-card">
+                <div class="shine"></div>
+                <div class="integration-icon int-email">📧</div>
+                <h3>Email</h3>
+                <p>Automated confirmations and newsletters</p>
+            </div>
+            <div class="glass-card integration-card">
+                <div class="shine"></div>
+                <div class="integration-icon int-calendar">📅</div>
+                <h3>Calendar</h3>
+                <p>Booking sync with Google & Outlook</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <div class="section-header">
+            <h2>What We Stand For</h2>
+            <p>The principles behind every portal we build</p>
+        </div>
+        <div class="values-grid">
+            <div class="glass-card value-card">
+                <div class="shine"></div>
+                <div class="value-icon icon-speed">⚡</div>
+                <h3>Fast</h3>
+                <p>From enquiry to live portal in 48 hours. No lengthy development cycles.</p>
+            </div>
+            <div class="glass-card value-card">
+                <div class="shine"></div>
+                <div class="value-icon icon-simple">🎯</div>
+                <h3>Simple</h3>
+                <p>Manage your entire business from your phone. No tech skills required.</p>
+            </div>
+            <div class="glass-card value-card">
+                <div class="shine"></div>
+                <div class="value-icon icon-connected">🔗</div>
+                <h3>Connected</h3>
+                <p>WhatsApp, payments, bookings, and social — all working together seamlessly.</p>
+            </div>
+            <div class="glass-card value-card">
+                <div class="shine"></div>
+                <div class="value-icon icon-affordable">💎</div>
+                <h3>Affordable</h3>
+                <p>One flat fee. No monthly subscriptions. No hidden costs. Ever.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section">
+        <div class="section-header">
+            <h2>How It Works</h2>
+            <p>Four simple steps to your new digital business</p>
+        </div>
+        <div class="process-grid">
+            <div class="glass-card process-card">
+                <div class="shine"></div>
+                <div class="process-number">1</div>
+                <div class="process-content">
+                    <h3>Pick Your Portal</h3>
+                    <p>Choose from 8 proven business models, each designed for mobile-first customer interaction.</p>
+                </div>
+            </div>
+            <div class="glass-card process-card">
+                <div class="shine"></div>
+                <div class="process-number">2</div>
+                <div class="process-content">
+                    <h3>We Build It</h3>
+                    <p>Our team creates your branded portal, connects your WhatsApp, sets up payments, and configures bookings.</p>
+                </div>
+            </div>
+            <div class="glass-card process-card">
+                <div class="shine"></div>
+                <div class="process-number">3</div>
+                <div class="process-content">
+                    <h3>Go Live</h3>
+                    <p>Your portal launches with your domain, ready to take enquiries, bookings, and payments immediately.</p>
+                </div>
+            </div>
+            <div class="glass-card process-card">
+                <div class="shine"></div>
+                <div class="process-number">4</div>
+                <div class="process-content">
+                    <h3>Run From Your Phone</h3>
+                    <p>Manage customers, respond to enquiries, and track orders — all through WhatsApp and simple dashboards.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <section class="stats-bar">
+        <div class="stats-grid">
+            <div class="glass-card stat-card">
+                <div class="shine"></div>
+                <div class="stat-number">8</div>
+                <div class="stat-label">Portal Types</div>
+            </div>
+            <div class="glass-card stat-card">
+                <div class="shine"></div>
+                <div class="stat-number">48h</div>
+                <div class="stat-label">To Go Live</div>
+            </div>
+            <div class="glass-card stat-card">
+                <div class="shine"></div>
+                <div class="stat-number">2.4k</div>
+                <div class="stat-label">Business Owners</div>
+            </div>
+            <div class="glass-card stat-card">
+                <div class="shine"></div>
+                <div class="stat-number">£850</div>
+                <div class="stat-label">Flat Rate</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="glass-card cta-card">
+            <div class="shine"></div>
+            <h2>Ready to QuickLaunch?</h2>
+            <p>Your customers are already online. Meet them there with a complete Business-In-a-Box portal — built, connected, and ready to earn.</p>
+            <a href="index.html" class="btn-primary">
+                Browse Portals
+                <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-item">
+                <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/>
+                </svg>
+                <span class="nav-label">Boxes</span>
+            </a>
+            <a href="about.html" class="nav-item active">
+                <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                <span class="nav-label">About</span>
+            </a>
+            <a href="#" class="nav-item" onclick="showToast(event)">
+                <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                <span class="nav-label">Pricing</span>
+            </a>
+            <a href="#" class="nav-item" onclick="showToast(event)">
+                <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                </svg>
+                <span class="nav-label">Contact</span>
+            </a>
+        </div>
+    </nav>
+
+    <script>
+        function showToast(e) {
+            if (e) e.preventDefault();
+            const toast = document.createElement('div');
+            toast.style.cssText = `
+                position: fixed;
+                top: 24px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: rgba(255,255,255,0.1);
+                backdrop-filter: blur(20px);
+                border: 1px solid rgba(255,255,255,0.2);
+                padding: 16px 24px;
+                border-radius: 16px;
+                color: white;
+                font-weight: 600;
+                z-index: 2000;
+                animation: slideDown 0.4s ease;
+            `;
+            toast.textContent = 'Coming soon!';
+            document.body.appendChild(toast);
+            setTimeout(() => {
+                toast.style.animation = 'slideUp 0.4s ease forwards';
+                setTimeout(() => toast.remove(), 400);
+            }, 2000);
+        }
+
+        // Parallax orbs
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const scrolled = window.pageYOffset;
+                    document.querySelectorAll('.orb').forEach((orb, index) => {
+                        const speed = 0.5 + (index * 0.2);
+                        orb.style.transform = `translateY(${scrolled * speed}px)`;
+                    });
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+
+        // Intersection Observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.glass-card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
